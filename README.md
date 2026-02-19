@@ -1,5 +1,7 @@
 # QuickJS Wrapper
 
+[简体中文](README_CN.md)
+
 A modern C++ wrapper for [QuickJS](https://bellard.org/quickjs/) - a small and embeddable JavaScript engine.
 
 ## Features

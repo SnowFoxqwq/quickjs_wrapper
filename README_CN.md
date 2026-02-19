@@ -1,5 +1,7 @@
 # QuickJS Wrapper
 
+[ENGLISH](README_EN.md)
+
 一个现代化的 C++ 封装库，用于 [QuickJS](https://bellard.org/quickjs/) - 一个小巧且可嵌入的 JavaScript 引擎。
 
 ## 特性
