@@ -19,6 +19,14 @@
 - [xmake](https://xmake.io/) 构建系统
 - QuickJS 库（由 xmake 自动获取）
 
+## 许可证 / License
+
+本项目基于 **Apache License 2.0** 协议开源。
+
+This project is open sourced under the **Apache License 2.0**.
+
+详细内容请查看 [LICENSE](LICENSE) 文件。
+
 ## 快速开始
 
 ### 构建库

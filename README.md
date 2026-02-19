@@ -19,6 +19,12 @@ A modern C++ wrapper for [QuickJS](https://bellard.org/quickjs/) - a small and e
 - [xmake](https://xmake.io/) build system
 - QuickJS library (automatically fetched by xmake)
 
+## License
+
+This project is licensed under the **Apache License 2.0**.
+
+See [LICENSE](LICENSE) for details.
+
 ## Quick Start
 
 ### Build the library
