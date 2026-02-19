@@ -60,6 +60,28 @@ namespace js
         // get exception of the current js context
         Value get_exception() const;
 
+        // add a variable to global object
+        template <typename T>
+        Context& add_variable(const std::string& name, T value)
+        {
+            JSValue global = JS_GetGlobalObject(_context);
+            JSValue js_val = detail::TypeConverter<detail::remove_cvref_t<T>>::to_js(_context, value);
+            JS_SetPropertyStr(_context, global, name.c_str(), js_val);
+            JS_FreeValue(_context, global);
+            return *this;
+        }
+
+        // add a constant to global object (read-only)
+        template <typename T>
+        Context& add_constant(const std::string& name, T value)
+        {
+            JSValue global = JS_GetGlobalObject(_context);
+            JSValue js_val = detail::TypeConverter<detail::remove_cvref_t<T>>::to_js(_context, value);
+            JS_DefinePropertyValueStr(_context, global, name.c_str(), js_val, JS_PROP_CONFIGURABLE | JS_PROP_WRITABLE);
+            JS_FreeValue(_context, global);
+            return *this;
+        }
+
         // add a module to the current js context
         Module& add_module(const std::string& name);
 

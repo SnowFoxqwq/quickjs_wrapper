@@ -131,6 +131,26 @@ catch (const js::Exception& e)
 }
 ```
 
+### 全局变量
+
+```cpp
+// 添加变量到全局对象
+context.add_variable("myVar", 42);
+context.add_variable("myString", "Hello from C++");
+context.add_variable("myDouble", 3.14);
+
+// 添加常量到全局对象
+context.add_constant("PI", 3.14159);
+context.add_constant("APP_NAME", "MyApp");
+
+// 在 JavaScript 中使用
+context.eval(R"(
+    print(myVar);        // 输出: 42
+    print(myString);     // 输出: Hello from C++
+    print(PI);           // 输出: 3.14159
+)");
+```
+
 ## API 概览
 
 ### Runtime（运行时）
@@ -144,6 +164,10 @@ js::Context context(runtime);           // 创建上下文
 js::Value result = context.eval(code);  // 执行 JS 代码
 js::Module& mod = context.add_module("Name");  // 添加模块
 js::Value global = context.get_global();       // 获取全局对象
+
+// 添加全局变量/常量
+context.add_variable("varName", value);    // 添加变量
+context.add_constant("CONST_NAME", value); // 添加常量
 ```
 
 ### Module（模块）

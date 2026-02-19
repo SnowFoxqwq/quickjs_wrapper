@@ -276,6 +276,26 @@ int main()
         )");
         print_test_result("Type conversion (JS side)", static_cast<bool>(type_convert_result));
 
+        // Test global variables
+        context.add_variable("globalVar", 42)
+            .add_variable("globalString", "Hello from C++")
+            .add_constant("GLOBAL_CONST", 3.14159);
+
+        auto global_var_result = context.eval(R"(
+            globalVar + 8;
+        )");
+        print_test_result("Global variable access", static_cast<int32_t>(global_var_result) == 50);
+
+        auto global_string_result = context.eval(R"(
+            globalString + " World!";
+        )");
+        print_test_result("Global string variable", static_cast<std::string>(global_string_result) == "Hello from C++ World!");
+
+        auto global_const_result = context.eval(R"(
+            GLOBAL_CONST * 2;
+        )");
+        print_test_result("Global constant access", static_cast<double>(global_const_result) == 6.28318);
+
         // All tests passed
         std::cout << "\n===== All Tests Completed =====" << std::endl;
     }

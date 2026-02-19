@@ -131,6 +131,26 @@ catch (const js::Exception& e)
 }
 ```
 
+### Global Variables
+
+```cpp
+// Add variables to global object
+context.add_variable("myVar", 42);
+context.add_variable("myString", "Hello from C++");
+context.add_variable("myDouble", 3.14);
+
+// Add constants to global object
+context.add_constant("PI", 3.14159);
+context.add_constant("APP_NAME", "MyApp");
+
+// Use in JavaScript
+context.eval(R"(
+    print(myVar);        // Output: 42
+    print(myString);     // Output: Hello from C++
+    print(PI);           // Output: 3.14159
+)");
+```
+
 ## API Overview
 
 ### Runtime
@@ -144,6 +164,10 @@ js::Context context(runtime);           // Creates a context
 js::Value result = context.eval(code);  // Evaluate JS code
 js::Module& mod = context.add_module("Name");  // Add a module
 js::Value global = context.get_global();       // Get global object
+
+// Add global variables/constants
+context.add_variable("varName", value);   // Add variable
+context.add_constant("CONST_NAME", value); // Add constant
 ```
 
 ### Module
